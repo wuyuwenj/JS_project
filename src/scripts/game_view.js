@@ -15,7 +15,7 @@ class GameView {
     }
 
     start() {
-        console.log('pass')
+        // console.log('pass')
         this.bindKeyHandlers();
         
       
@@ -37,19 +37,17 @@ class GameView {
         if(this.game.change_level===false){
             this.collidewithduck()
         }
-        console.log('pass')
-        console.log('key', keys.r)
+        // console.log('pass')
+        // console.log('key', keys.r)
         if(keys.r===true){
-            console.log('r pressed')
+            console.log("???????")
+            this.game.updatemap()
+            keys.r=false
         }
         // console.log(this.game.ducks[0], "ducksss!!")
         this.game.draw(this.ctx);
         this.player1.updateHitbox()
-        // console.log(this.player1.position)
-        // console.log(this.game.platforms)
-        // console.log(this.player1.hitbox.position.x)
-        // console.log(this.player1.hitbox.x)
-        // console.log(this.player1.hitbox)
+  
         //hitbox
         // this.ctx.fillStyle = 'red'
         // this.ctx.fillRect(this.player1.hitbox.position.x, this.player1.hitbox.position.y, this.player1.hitbox.width, this.player1.hitbox.height)

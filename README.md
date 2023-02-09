@@ -1,10 +1,10 @@
 Background
 
-A shady company is secretly planning something in the top of the building… You as a spy is going to climb up to the top and fight enemies on the way up to find the secret...
+"Pixel Quack Quest: The Dungeon Rescue" is a game in which players must locate and rescue a group of missing ducks. Players must interact with characters and collect clues to uncover the ducks' whereabouts.
 
 Rules:
-1)	You will have 1 live on each level, try to avoid enemies or destroy them with shooting 
-2)	You can move shoot and jump
+1)	You will have 1 live on each level, try to avoid enemies and get over the hurdles
+2)	You can move left, right and jump
 
 Functionality
 
@@ -32,7 +32,7 @@ This project will be implemented with the following technologies:
 
 Implementation Timeline
 NB:
-•	Friday Afternoon & Weekend: Setup project, including getting webpack up and running. Get canvas to show up on the screen, and spend time getting comfortable with the Canvas API. Create Board, Player, Enemy and Bullet classes. Try to render the grid, make sure the player can move properly with wasd key and jump. 
+•	Friday Afternoon & Weekend: Setup project, including getting webpack up and running. Get canvas to show up on the screen, and spend time getting comfortable with the Canvas API. Create Tilemap, Player, Ducks and Platform classes. Try to render the grid, make sure the player can move properly with wad key. 
 
 •	Monday: Start creating different objects such as enemies and floor to support the player If possible, try to start working on collision between floor, player, bullet and enemies.
 
@@ -45,7 +45,7 @@ NB:
 
 
 Bonus features
-•	
+•	Adding multiple ducks in a map
+•	reduce player jump height after every rescure in a level, so that player have to figure out which to rescure first
 •	Adding different types of enemies such as enemies that can jump or shoot.
-
 •	Set the display to move with the character, so that the level would be more interesting.
