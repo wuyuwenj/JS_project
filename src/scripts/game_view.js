@@ -15,6 +15,7 @@ class GameView {
     }
 
     start() {
+        console.log('pass')
         this.bindKeyHandlers();
         
       
@@ -35,6 +36,11 @@ class GameView {
         // console.log(this.game.change_level,"level!!")
         if(this.game.change_level===false){
             this.collidewithduck()
+        }
+        console.log('pass')
+        console.log('key', keys.r)
+        if(keys.r===true){
+            console.log('r pressed')
         }
         // console.log(this.game.ducks[0], "ducksss!!")
         this.game.draw(this.ctx);

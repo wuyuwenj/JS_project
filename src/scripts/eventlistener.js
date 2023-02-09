@@ -8,6 +8,9 @@ const keys = {
     d: {
         pressed: false,
     },
+    r:{
+        pressed: false
+    }
 }
 
 window.addEventListener('keydown', (event) => {
@@ -21,6 +24,9 @@ window.addEventListener('keydown', (event) => {
         case 'd':
             // move player to the right
             keys.d.pressed = true
+            break
+        case 'r':
+            keys.r.pressed = true
             break
     }
 
@@ -38,5 +44,6 @@ window.addEventListener('keyup', (event) => {
             keys.d.pressed = false
 
             break
+
     }
 })

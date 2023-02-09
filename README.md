@@ -9,20 +9,17 @@ Rules:
 Functionality
 
 Players will be able to: 
-•	Move with wasd
-•	Shoot with enter and jump with space
-•	Start, pause and reset the level
+•	Moving left and right with a and d
+•	jump with w
+•	Start and reset the level
+•	Enter the next level after rescure the duck
 
-Enemies will be able to:
-•	Move with default route
-•	Shoot bullet
+
 
 Wireframes
-•	Simple instructions will include move:wasd, shoot:enter and jump:space to make sure player know how to play
+•	Simple instructions will include move:wad to make sure player know how to play
 •	Controls will includes Start, stop, Reset and back to main menu.
 •	Nav links include links to this project's Github repo, my LinkedIn.
-•	Music button will let player open or close the music 
-•	
 
 Technologies, Libraries, APIs
 This project will be implemented with the following technologies:
@@ -48,7 +45,7 @@ NB:
 
 
 Bonus features
+•	
 •	Adding different types of enemies such as enemies that can jump or shoot.
-•	Adding more mechanics such as double jump and teleport to the character.
-•	Adding weapon upgrade and different weapon like sword.
-•	Set the display to move with the character, so that the level could be longer.
+
+•	Set the display to move with the character, so that the level would be more interesting.

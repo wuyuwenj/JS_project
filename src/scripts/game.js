@@ -1,30 +1,31 @@
 import Player from "./player"
-import Platform from "./platform"
-import Sprite from "./Sprite"
 import Tilemap from "./tilemap";
 
 class Game {
     static DIM_X = 8*108;//864
     static DIM_Y = 8*64;//512
     constructor(ctx) {
-        // console.log('p..ass')
+        console.log('p..ass')
         const ani_char={
             left:{
                 frame_rate: 6,
                 frame_buffer:6,
                 loop:true,
-                imageSrc:'./Char_sprite_left.png'
+                imageSrc:'Char_sprite_left.png'
             },
             right: {
                 frame_rate: 6,
                 frame_buffer: 6,
                 loop: true,
-                imageSrc: './Char_sprite.png'
+                // imageSrc: 'image/Char_sprite.png'
+                // imageSrc: './image/Char_sprite.png'
+                // imageSrc: '../../image/Char_sprite.png'
+                imageSrc: 'Char_sprite.png'
             },
         }
         this.level=0
         this.change_level=false
-        this.player = new Player('./Char_sprite.png', ani_char)
+        this.player = new Player('Char_sprite.png', ani_char)
         // console.log('p..ass')
         // this.bullets = []
         this.enemies = []
@@ -34,8 +35,9 @@ class Game {
         this.addPlatform(this.level)
         this.addDucks(this.level)
         // console.log('pass')
-        this.image = new Tilemap([0, 0], './level1.png')
+        this.image = new Tilemap([0, 0], 'level1.png')
         // console.log(this.image.src,"IMAGE")
+        console.log('pass')
     }
 
     addPlatform(current_level){
@@ -82,13 +84,13 @@ class Game {
                 frame_rate: 6,
                 frame_buffer: 6,
                 loop: true,
-                imageSrc: './Char_sprite_left.png'
+                imageSrc: 'Char_sprite_left.png'
             },
             right: {
                 frame_rate: 6,
                 frame_buffer: 6,
                 loop: true,
-                imageSrc: './Char_sprite.png'
+                imageSrc: 'Char_sprite.png'
             },
         }
         this.platforms = []
@@ -96,9 +98,9 @@ class Game {
         this.addPlatform(this.level)
         this.addDucks(this.level)
         if(this.level===1){
-            this.image = new Tilemap([0, 0], './level2.png')
+            this.image = new Tilemap([0, 0], 'level2.png')
         }else if(this.level===2){
-            this.image = new Tilemap([0, 0], './level3.png')
+            this.image = new Tilemap([0, 0], 'level3.png')
         }
         
         this.change_level = false

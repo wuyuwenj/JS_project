@@ -5,17 +5,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link rel="stylesheet" href="./src/styles/index.scss" />
+    <!-- <link rel="stylesheet" href="./dist/main.css" /> -->
     <link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
     <script src="vendor/keymaster.js"></script>
     <script src="./dist/main.js"></script>
-    <script src="./src/Sprite.js"></script>
-    <script src="./src/data.js"></script>
-    <script src="./src/eventlistener.js"></script>
-    <title>Pixel Quack Quest: The Dungeon Rescue</title>
+    <script src="./src/levels_data/data.js"></script>
     <style>
-        @import url('https://fonts.cdnfonts.com/css/common-pixel');
-
         #game-description {
             color: rgb(4, 6, 10);
             background-color: rgb(230, 227, 23);
@@ -23,22 +18,21 @@
             display: flex;
             flex-direction: column;
             position: fixed;
-            top: 40%;
-            left: 20%;
-            font-family:'Common Pixel', sans-serif;
+            top: 30%;
+            left: 10%;
+            font-family: 'Common Pixel', sans-serif;
             border-radius: 100px;
         }
-        
-        button{
+
+        button {
             padding: 5px 20px;
             margin: 5px 5px;
             background-color: transparent;
-            font-family:'Common Pixel', sans-serif;
+            font-family: 'Common Pixel', sans-serif;
             border-radius: 10px;
             position: relative;
         }
-    
-        #canvas {
+         #canvas {
             display: none;
         }
         #game-instruction{
@@ -49,20 +43,34 @@
             left: 35%;
             font-family:'Common Pixel', sans-serif;
         }
+        #icons{
+            flex-direction: row;
+        }
     </style>
+    <title>Pixel Quack Quest: The Dungeon Rescue</title>
+    
 </head>
 
 <body>
     <canvas id="canvas" ></canvas>
     <div id="game-description">
+        <div id="icons">
+            
+                <a href="https://github.com/wuyuwenj">
+                    <img src="./github.png" width="50" height="60">
+                </a>
+                <a href="https://www.linkedin.com/in/wu-yuwen-5a609520a/">
+                    <img src="./linkedin.png" width="50" height="60">
+                </a>
+        </div>
         <h1>Welcome to the game!</h1>
-        <p>In this game, you will control a character to save ducks inside a dungeon!</p>
-        
+        <h2>In this game, you will control a character to save ducks inside a dungeon!</h2>
+        <h2>Click to Start:</h2>
         <button id="start-game-button">Start Game</button>
     </div>
     <div id="game-instruction">
         <h1>Control:</h1>
-        <img src="control.png" >
+        <img src="./control.png" >
         <p>press any key to continue...</p>
     </div>
     <script>
