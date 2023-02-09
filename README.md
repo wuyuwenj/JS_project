@@ -15,6 +15,8 @@ Players will be able to:
 •	Enter the next level after rescure the duck
 
 
+<img width="395" alt="startscreen" src="https://user-images.githubusercontent.com/83894727/217940436-ce855f0e-9418-4450-9402-bf117dab29a3.png">
+
 
 Wireframes
 •	Simple instructions will include move:wad to make sure player know how to play
