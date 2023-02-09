@@ -17,9 +17,9 @@ Players will be able to:
 
 
 Wireframes
-•	Simple instructions will include move:wad to make sure player know how to play
-•	Controls will includes Start, stop, Reset and back to main menu.
-•	Nav links include links to this project's Github repo, my LinkedIn.
+•	A start screen will appear for some game description and a start button at first.
+•	After the player start the game, the screen will show wad control. 
+•	Then, player can press any keys after to start playing.
 
 Technologies, Libraries, APIs
 This project will be implemented with the following technologies:
@@ -34,7 +34,7 @@ Implementation Timeline
 NB:
 •	Friday Afternoon & Weekend: Setup project, including getting webpack up and running. Get canvas to show up on the screen, and spend time getting comfortable with the Canvas API. Create Tilemap, Player, Ducks and Platform classes. Try to render the grid, make sure the player can move properly with wad key. 
 
-•	Monday: Start creating different objects such as enemies and floor to support the player If possible, try to start working on collision between floor, player, bullet and enemies.
+•	Monday: Start creating different objects such as enemies and floor to support the player If possible, try to start working on collision between floor, player and duck.
 
 •	Tuesday: Finish all collisions and work on creating and designing different levels 
 
