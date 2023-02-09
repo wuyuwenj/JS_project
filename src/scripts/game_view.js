@@ -38,9 +38,9 @@ class GameView {
             this.collidewithduck()
         }
         // console.log('pass')
-        console.log('key', keys.r)
+//         console.log('key', keys.r)
         if(keys.r.pressed===true){
-            console.log("???????")
+//             console.log("???????")
             this.game.updatemap()
             keys.r.pressed=false
         }
