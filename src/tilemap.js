@@ -1,6 +1,6 @@
 class Tilemap {
     constructor(pos, imageSrc) {
-        console.log("pass1")
+        // console.log("pass1")
 
         this.position = {
             x: pos[0],
@@ -15,7 +15,7 @@ class Tilemap {
 
     }
     draw(ctx) {
-        console.log("this.loaded", this.loaded)
+        // console.log("this.loaded", this.loaded)
         if (!this.loaded) return
         // ctx.save()
         // ctx.scale(8,8)

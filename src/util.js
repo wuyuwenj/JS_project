@@ -1,24 +1,24 @@
 import Platform from "./platform";
-// export const collide=(player, platform) => {
-//     // console.log(platform)
-//     const dx = (player.position.x + player.width / 2) - (platform.position.x + platform.width / 2);
-//     const dy = (player.position.y + player.height / 2) - (platform.position.y + platform.height / 2);
-//     const width = (player.width + platform.width) / 2;
-//     const height = (player.height + platform.height) / 2;
-//     const crossWidth = width * dy;
-//     const crossHeight = height * dx;
-//     let collision = 'none';
-//     //
-//     // console.log("???")
-//     if (Math.abs(dx) <= width && Math.abs(dy) <= height) {
-//         if (crossWidth > crossHeight) {
-//             collision = (crossWidth > (-crossHeight)) ? 'bottom' : 'left';
-//         } else {
-//             collision = (crossWidth > -(crossHeight)) ? 'right' : 'top';
-//         }
-//     }
-//     return (collision);
-// }
+import Ducks from "./ducks"
+export const collide=(player, platform) => {
+    // console.log(platform,player,"--")
+    const dx = (player.position.x + player.width / 2) - (platform.position.x + platform.width / 2);
+    const dy = (player.position.y + player.height / 2) - (platform.position.y + platform.height / 2);
+    const width = (player.width + platform.width) / 2;
+    const height = (player.height + platform.height) / 2;
+    const crossWidth = width * dy;
+    const crossHeight = height * dx;
+    let collision = 'none';
+    // console.log("???")
+    if (Math.abs(dx) <= width && Math.abs(dy) <= height) {
+        if (crossWidth > crossHeight) {
+            collision = (crossWidth > (-crossHeight)) ? 'bottom' : 'left';
+        } else {
+            collision = (crossWidth > -(crossHeight)) ? 'right' : 'top';
+        }
+    }
+    return (collision);
+}
 
 Array.prototype.parse2D = function () {
     const rows = []
@@ -36,6 +36,8 @@ Array.prototype.createObjectsFrom2D = function () {
             if (symbol === 236) {
                 objects.push(new Platform([x*8,y*8]))
                 
+            }else if(symbol ===23){
+                objects.push(new Ducks([x * 8, y * 8]) )
             }
         })
     })

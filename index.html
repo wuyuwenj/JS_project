@@ -5,18 +5,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!-- <link rel="stylesheet" href="./src/styles/index.scss" /> -->
+    <link rel="stylesheet" href="./src/styles/index.scss" />
+    <link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
     <script src="vendor/keymaster.js"></script>
     <script src="./dist/main.js"></script>
     <script src="./src/Sprite.js"></script>
-    <title>Project Name</title>
+    <script src="./src/data.js"></script>
+    <script src="./src/eventlistener.js"></script>
+    <title>Pixel Quack Quest: The Dungeon Rescue</title>
+    <style>
+        @import url('https://fonts.cdnfonts.com/css/common-pixel');
+
+        #game-description {
+            color: rgb(4, 6, 10);
+            background-color: rgb(230, 227, 23);
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            position: fixed;
+            top: 40%;
+            left: 20%;
+            font-family:'Common Pixel', sans-serif;
+            border-radius: 100px;
+        }
+        
+        button{
+            padding: 5px 20px;
+            margin: 5px 5px;
+            background-color: transparent;
+            font-family:'Common Pixel', sans-serif;
+            border-radius: 10px;
+            position: relative;
+        }
+    
+        #canvas {
+            display: none;
+        }
+        #game-instruction{
+            display: none;
+            flex-direction: column;
+            position: fixed;
+            top: 40%;
+            left: 35%;
+            font-family:'Common Pixel', sans-serif;
+        }
+    </style>
 </head>
 
 <body>
-    <h1>Control</h1>
-   
-
     <canvas id="canvas" ></canvas>
+    <div id="game-description">
+        <h1>Welcome to the game!</h1>
+        <p>In this game, you will control a character to save ducks inside a dungeon!</p>
+        
+        <button id="start-game-button">Start Game</button>
+    </div>
+    <div id="game-instruction">
+        <h1>Control:</h1>
+        <img src="control.png" >
+        <p>press any key to continue...</p>
+    </div>
+    <script>
+        document.getElementById("start-game-button").addEventListener("click", function () {
+            document.getElementById("game-description").style.display = "none";
+            document.getElementById("game-instruction").style.display = "flex";
+        });
+        document.addEventListener("keypress", function () {
+                document.getElementById("game-instruction").style.display = "none";
+                document.getElementById("canvas").style.display = "block";
+            });
+    </script>
 </body>
 
 </html>

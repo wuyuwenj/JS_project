@@ -4,16 +4,16 @@ import Sprite  from "./Sprite"
 
 class Player extends Sprite{
     static POS = {
-        x: 30,
+        x: 200,
         y: 400
     }
     
     constructor(imageSrc,animations) {
-        console.log('play_pass1','this')
+        // console.log('play_pass1','this')
         
        
-        console.log('play_pass1')
-        console.log(animations)
+        // console.log('play_pass1')
+        // console.log(animations)
         super([Player.POS.x, Player.POS.y], imageSrc,6,animations)
         this.gravity=0.3
         this.onground=true
@@ -36,6 +36,11 @@ class Player extends Sprite{
             if (key === 'a' || key === 'd') {
                 this.velocity.x = dir
             }
+            if(key==='a'){
+                this.switchSprite('left')
+            }else if(key==='d'){
+                this.switchSprite('right')
+            }
 
         })
         addEventListener('keyup', ({ key }) => {
@@ -46,6 +51,17 @@ class Player extends Sprite{
         })
      
        
+    }
+
+    switchSprite(name) {
+        // console.log(this.animations)
+        if (this.image === this.animations[name].image) return
+        this.currentFrame = 0
+        this.image = this.animations[name].image
+        this.frame_rate = this.animations[name].frame_rate
+        this.frameBuffer = this.animations[name].frame_buffer
+        this.loop = this.animations[name].loop
+        this.currentAnimation = this.animations[name]
     }
 
     updateHitbox() {
@@ -61,13 +77,13 @@ class Player extends Sprite{
 
     jump() {
         if(this.velocity.y===0){
-            this.velocity.y = -5
+            this.velocity.y = -4.5
             this.onground = false
         }
         
     }
 
-
+    //drawing char as a block for testing
     // draw(ctx) {
     //     // console.log("ctx,",ctx)
     //     ctx.fillStyle = 'red'

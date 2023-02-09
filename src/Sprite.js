@@ -1,6 +1,6 @@
 class Sprite{
     constructor(pos,imageSrc,frame_rate,animations){
-        console.log("pass1")
+        // console.log("pass1")
         
         this.position = {
             x:pos[0],
@@ -19,19 +19,16 @@ class Sprite{
         this.elapsedFrame = 0
         this.frameBuffer =6
         this.animations=animations
-        console.log('animation:',animations)
         if(this.animations){
             for(let key in this.animations){
                 const image=new Image()
                 image.src=this.animations[key].imageSrc
                 this.animations[key].image = image
             }
-            console.log(this.animations)
         }
     }
     draw(ctx){
         // console.log("this.loaded", this.loaded)
-        console.log('observe',this.width * (this.currentFrame % 6 ))
         if(!this.loaded)return
         const cropbox = {
             position:{

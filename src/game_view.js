@@ -10,8 +10,7 @@ class GameView {
         this.game = new Game(ctx);
         this.lastTime = 0;
         this.levels=1;
-        this.player1 = this.game.player
-        this.platforms = this.game.platforms
+        
         
     }
 
@@ -25,20 +24,26 @@ class GameView {
     animate(time) {
         let timeDelta = time - this.lastTime;
         // console.log("this.game.player", this.player1.position)
-        
+        this.player1 = this.game.player
+        this.platforms = this.game.platforms
         this.velapply()
         this.player1.updateHitbox()
         this.HorizontalCollisions()
         this.applyGravity()
         this.player1.updateHitbox()
         this.VerticalCollisions()
-
-        
+        // console.log(this.game.change_level,"level!!")
+        if(this.game.change_level===false){
+            this.collidewithduck()
+        }
+        // console.log(this.game.ducks[0], "ducksss!!")
         this.game.draw(this.ctx);
         this.player1.updateHitbox()
-        console.log(this.player1.hitbox.position.x)
-        console.log(this.player1.hitbox.x)
-        console.log(this.player1.hitbox)
+        // console.log(this.player1.position)
+        // console.log(this.game.platforms)
+        // console.log(this.player1.hitbox.position.x)
+        // console.log(this.player1.hitbox.x)
+        // console.log(this.player1.hitbox)
         //hitbox
         // this.ctx.fillStyle = 'red'
         // this.ctx.fillRect(this.player1.hitbox.position.x, this.player1.hitbox.position.y, this.player1.hitbox.width, this.player1.hitbox.height)
@@ -51,6 +56,17 @@ class GameView {
         this.game.player.position.x += this.game.player.velocity.x
     }
     
+    collidewithduck(){
+        // console.log(this.game.platforms)
+        // console.log(this.game.ducks[this.game.level])
+        for(let i=0;i<this.game.ducks.length;i++){
+
+            if (this.game.ducks[i] &&this.game.player.hitbox &&collide(this.game.player.hitbox, this.game.ducks[i]) != 'none'){
+                this.game.level++
+                this.game.change_level = true
+            }
+        }
+    }
 
     bindKeyHandlers() {
         key('a', () => this.game.player.move(-2));
@@ -62,7 +78,7 @@ class GameView {
     HorizontalCollisions() {
         for (let i = 0; i < this.platforms.length; i++) {
             const collisionBlock = this.platforms[i]
-
+            
             // if a collision exists
             if (
                 this.player1.hitbox.position.x <=
@@ -74,17 +90,16 @@ class GameView {
                 this.player1.hitbox.position.y <=
                 collisionBlock.position.y + collisionBlock.height
             ) {
+                // console.log('collusion!!!','hor')
                 //push back out the block
                 if (this.player1.velocity.x < -0) {
-                    const offset = this.player1.hitbox.position.x - this.player1.hitbox.position.x
-                    this.player1.position.x =
-                        collisionBlock.position.x + collisionBlock.width - offset + 0.01
+                    const offset = this.player1.hitbox.position.x - this.player1.position.x
+                    this.player1.position.x =collisionBlock.position.x + collisionBlock.width - offset + 0.01
                     break
                 }
                 //push back out the block
                 if (this.player1.velocity.x > 0) {
-                    const offset =
-                        this.player1.hitbox.position.x - this.player1.position.x + this.player1.hitbox.width
+                    const offset = this.player1.hitbox.position.x - this.player1.position.x + this.player1.hitbox.width
                     this.player1.position.x = collisionBlock.position.x - offset - 0.01
                     break
                 }
@@ -111,6 +126,7 @@ class GameView {
                 this.player1.hitbox.position.y <=
                 collisionBlock.position.y + collisionBlock.height
             ) {
+                // console.log('collusion!!!','vert!')
                 //push back out the block
                 if (this.player1.velocity.y < 0) {
                     this.player1.velocity.y = 0
