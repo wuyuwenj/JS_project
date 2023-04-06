@@ -6,11 +6,16 @@ Rules:
 
 1)	You will have 1 live on each level, try to avoid enemies and get over the hurdles
 
+<<<<<<< HEAD
 2)	You can move left, right and jump
+=======
+3)	You can move left, right and jump
+>>>>>>> origin/main
 
 Functionality
 
 Players will be able to: 
+
 •	Moving left and right with a and d
 
 •	jump with w
@@ -20,14 +25,24 @@ Players will be able to:
 •	Enter the next level after rescure the duck
 
 
+<img width="395" alt="startscreen" src="https://user-images.githubusercontent.com/83894727/217940436-ce855f0e-9418-4450-9402-bf117dab29a3.png">
+
 
 Wireframes
 
+<<<<<<< HEAD
 •	A start screen will appear for some game description and a start button at first.
 
 •	After the player start the game, the screen will show wad control. 
 
 •	Then, player can press any keys after to start playing.
+=======
+•	Simple instructions will include move:wad to make sure player know how to play
+
+•	Controls will includes Start, stop, Reset and back to main menu.
+
+•	Nav links include links to this project's Github repo, my LinkedIn.
+>>>>>>> origin/main
 
 Technologies, Libraries, APIs
 
@@ -67,3 +82,4 @@ Bonus features
 •	Adding different types of enemies such as enemies that can jump or shoot.
 
 •	Set the display to move with the character, so that the level would be more interesting.
+

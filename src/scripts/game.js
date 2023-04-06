@@ -5,7 +5,7 @@ class Game {
     static DIM_X = 8*108;//864
     static DIM_Y = 8*64;//512
     constructor(ctx) {
-        console.log('p..ass')
+        // console.log('p..ass')
         const ani_char={
             left:{
                 frame_rate: 6,
@@ -37,7 +37,7 @@ class Game {
         // console.log('pass')
         this.image = new Tilemap([0, 0], 'level1.png')
         // console.log(this.image.src,"IMAGE")
-        console.log('pass')
+        // console.log('pass')
     }
 
     addPlatform(current_level){
