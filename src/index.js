@@ -9,27 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.width = Game.DIM_X;
     canvas.height = Game.DIM_Y;
 
-    const loading = document.createElement('div');
-    loading.innerText = 'Loading...';
-    document.body.appendChild(loading);
+    // const loading = document.createElement('div');
+    // loading.innerText = 'Loading...';
+    // document.body.appendChild(loading);
 
-    const gamePromise = new Promise((resolve, reject) => {
+    setTimeout(() => {
         const game = new Game();
-        game.loadImages()
-            .then(() => {
-                resolve(game);
-            })
-            .catch((error) => {
-                reject(error);
-            });
-    });
-
-    gamePromise.then((game) => {
         const gameview = new GameView(ctx, game);
         gameview.start();
-        document.body.removeChild(loading);
-    }).catch((error) => {
-        console.error(error);
-        loading.innerText = `Error: ${error.message}`;
-    });
+        // document.body.removeChild(loading);
+    }, 2000); // 2000ms delay for demonstration purposes only
 });
