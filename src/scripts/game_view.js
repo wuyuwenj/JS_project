@@ -10,19 +10,17 @@ class GameView {
         this.game = new Game(ctx);
         this.lastTime = 0;
         // this.levels=1;
-        this.endingLevel=2;
+        this.endingLevel=3;
         
     }
 
     start() {
-        // console.log('pass')
         this.bindKeyHandlers();
         
       
         window.requestAnimationFrame(this.animate.bind(this))
     }
     ChangeToLosingScreen(currentgame){
-        console.log("ending")
         document.getElementById('canvas').style.display = 'none';
         document.getElementById('Game-over-screen').style.display = 'flex';
 
@@ -41,7 +39,6 @@ class GameView {
         
     }
     ChangeToWinningScreen(currentgame){
-        console.log("ending")
         document.getElementById('canvas').style.display = 'none';
         document.getElementById('winning-screen').style.display = 'flex';
 
@@ -62,8 +59,6 @@ class GameView {
     }
     animate(time) {
         // let timeDelta = time - this.lastTime;
-        // console.log("this.game.player", this.player1.position)
-
 
         if(this.game.level===this.endingLevel)this.ChangeToWinningScreen(this.game);
         this.player1 = this.game.player
@@ -74,18 +69,14 @@ class GameView {
         this.applyGravity()
         this.player1.updateHitbox()
         this.VerticalCollisions()
-        // console.log(this.game.change_level,"level!!")
         if(this.game.change_level===false){
             this.collidewithduck()
         }
-        // console.log('pass')
-        // console.log('key', keys.r)
+
         if(keys.r.pressed===true){
-            // console.log("???????")
             this.game.updatemap()
             keys.r.pressed=false
         }
-        // console.log(this.game.ducks[0], "ducksss!!")
         this.game.draw(this.ctx);
         this.player1.updateHitbox()
   
@@ -102,9 +93,7 @@ class GameView {
     }
     
     collidewithduck(){
-        // console.log(this.game.platforms)
-        // console.log(this.game.ducks[this.game.level])
-        for(let i=0;i<this.game.ducks.length;i++){
+          for(let i=0;i<this.game.ducks.length;i++){
 
             if (this.game.ducks[i] &&this.game.player.hitbox &&collide(this.game.player.hitbox, this.game.ducks[i]) != 'none'){
                 this.game.level++
@@ -135,7 +124,6 @@ class GameView {
                 this.player1.hitbox.position.y <=
                 collisionBlock.position.y + collisionBlock.height
             ) {
-                // console.log('collusion!!!','hor')
                 //push back out the block
                 if (this.player1.velocity.x < -0) {
                     const offset = this.player1.hitbox.position.x - this.player1.position.x
@@ -172,7 +160,6 @@ class GameView {
                 this.player1.hitbox.position.y <=
                 collisionBlock.position.y + collisionBlock.height
             ) {
-                // console.log('collusion!!!','vert!')
                 //push back out the block
                 if (this.player1.velocity.y < 0) {
                     this.player1.velocity.y = 0

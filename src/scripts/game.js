@@ -4,7 +4,6 @@ class Game {
     static DIM_X = 8*108;//864
     static DIM_Y = 8*64;//512
     constructor(ctx) {
-        // console.log('p..ass')
         const ani_char={
             left:{
                 frame_rate: 6,
@@ -23,26 +22,23 @@ class Game {
             },
         }
         this.level=0
+        this.maxlevel=2;
         this.change_level=false
         // this.bullets = []
         this.enemies = []
         this.platforms=[]
         this.ducks=[]
-        // console.log('p..ass')
-        this.addPlatform(this.level)
-        this.addDucks(this.level)
-        // console.log('pass')
+            this.addPlatform(this.level)
+            this.addDucks(this.level)
+        
         this.image = new Tilemap([0, 0], 'level1.png')
-        // console.log(this.image.src,"IMAGE")
-        // console.log('pass')
         this.player = new Player('Char_sprite.png', ani_char)
 
     }
 
     addPlatform(current_level){
-        // console.log('pass', level1_collusion.parse2D())
+        
         let parsedCollisions = collision_levels[current_level].parse2D()
-        // console.log('pass???????', parsedCollisions)
         this.platforms = parsedCollisions.createObjectsFrom2D()
     }
 
@@ -94,8 +90,11 @@ class Game {
         }
         this.platforms = []
         this.ducks = []
+
+        if(this.level<=this.maxlevel){
         this.addPlatform(this.level)
         this.addDucks(this.level)
+        }
         if(this.level===0){
             this.image = new Tilemap([0, 0], 'level1.png')
         }else if(this.level===1){
