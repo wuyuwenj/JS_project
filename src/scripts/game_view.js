@@ -9,8 +9,8 @@ class GameView {
         this.ctx = ctx;
         this.game = new Game(ctx);
         this.lastTime = 0;
-        this.levels=1;
-        
+        // this.levels=1;
+        this.endingLevel=2;
         
     }
 
@@ -21,10 +21,51 @@ class GameView {
       
         window.requestAnimationFrame(this.animate.bind(this))
     }
+    ChangeToLosingScreen(currentgame){
+        console.log("ending")
+        document.getElementById('canvas').style.display = 'none';
+        document.getElementById('Game-over-screen').style.display = 'flex';
 
+        document.getElementById("restart-game-button").addEventListener("click", function () {
+            currentgame.level = 0;
+            currentgame.updatemap();
+            document.getElementById("Game-over-screen").style.display = "none";
+            document.getElementById("canvas").style.display = "block";
+        });
+        document.getElementById("main-menu-button").addEventListener("click", function () {
+            currentgame.level = 0;
+            currentgame.updatemap();
+            document.getElementById("Game-over-screen").style.display = "none";
+            document.getElementById("game-description").style.display = "flex";
+        });
+        
+    }
+    ChangeToWinningScreen(currentgame){
+        console.log("ending")
+        document.getElementById('canvas').style.display = 'none';
+        document.getElementById('winning-screen').style.display = 'flex';
+
+        document.getElementById("win-restart-game-button").addEventListener("click", function () {
+            currentgame.level = 0;
+            currentgame.updatemap();
+            document.getElementById("winning-screen").style.display = "none";
+            document.getElementById("canvas").style.display = "block";
+        });
+
+        document.getElementById("win-main-menu-button").addEventListener("click", function () {
+            currentgame.level = 0;
+            currentgame.updatemap();
+
+            document.getElementById("winning-screen").style.display = "none";
+            document.getElementById("game-description").style.display = "flex";
+        });
+    }
     animate(time) {
-        let timeDelta = time - this.lastTime;
+        // let timeDelta = time - this.lastTime;
         // console.log("this.game.player", this.player1.position)
+
+
+        if(this.game.level===this.endingLevel)this.ChangeToWinningScreen(this.game);
         this.player1 = this.game.player
         this.platforms = this.game.platforms
         this.velapply()
@@ -102,9 +143,10 @@ class GameView {
                     break
                 }
                 //push back out the block
-                if (this.player1.velocity.x > 0) {
+                if (this.player1.velocity.x > 0&&this.player1.velocity.y===0) {
                     const offset = this.player1.hitbox.position.x - this.player1.position.x + this.player1.hitbox.width
                     this.player1.position.x = collisionBlock.position.x - offset - 0.01
+
                     break
                 }
             }

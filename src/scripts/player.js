@@ -15,7 +15,7 @@ class Player extends Sprite{
         // console.log('play_pass1')
         // console.log(animations)
         super([Player.POS.x, Player.POS.y], imageSrc,6,animations)
-        this.gravity=0.3
+        this.gravity=0.4
         this.onground=true
         // this.width = 8
         // this.height = 8
@@ -32,7 +32,7 @@ class Player extends Sprite{
     move(dir){
         // console.log(dir)
         addEventListener('keydown', ({key})=>{
-            // console.log(key)
+
             if (key === 'a' || key === 'd') {
                 this.velocity.x = dir
             }
@@ -76,11 +76,14 @@ class Player extends Sprite{
     }
 
     jump() {
+        // console.log(this.velocity.x, "velocity bj")
+        // console.log(this.velocity.y, "velocityy bj")
         if(this.velocity.y===0){
-            this.velocity.y = -4.5
+            this.velocity.y = -5
             this.onground = false
         }
-        
+
+
     }
 
     //drawing char as a block for testing

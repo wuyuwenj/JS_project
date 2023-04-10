@@ -8,6 +8,7 @@
     <!-- <link rel="stylesheet" href="./dist/main.css" /> -->
     <link href="https://fonts.cdnfonts.com/css/common-pixel" rel="stylesheet">
     <link rel="stylesheet" href="./dist/main.css" />
+<link rel="icon" type="image/x-icon" href="WebsiteIcon.jpeg">
 
     <script src="vendor/keymaster.js"></script>
     <script src="./dist/main.js"></script>
@@ -43,6 +44,18 @@
         <h1>Control:</h1>
         <img src="./control.png" >
         <p>press any key to continue...</p>
+    </div>
+
+    <div id="Game-over-screen">
+        <h1>Game Over</h1>
+        <button id="restart-game-button">Restart</button>
+        <button id="main-menu-button">Main Menu</button>
+    </div>
+
+    <div id="winning-screen">
+        <h1>You Win!</h1>
+        <button id="win-restart-game-button">Restart</button>
+        <button id="win-main-menu-button">Main Menu</button>
     </div>
     <script>
         document.getElementById("start-game-button").addEventListener("click", function () {

@@ -1,6 +1,5 @@
 import Player from "./player"
 import Tilemap from "./tilemap";
-
 class Game {
     static DIM_X = 8*108;//864
     static DIM_Y = 8*64;//512
@@ -25,8 +24,6 @@ class Game {
         }
         this.level=0
         this.change_level=false
-        this.player = new Player('Char_sprite.png', ani_char)
-        // console.log('p..ass')
         // this.bullets = []
         this.enemies = []
         this.platforms=[]
@@ -38,6 +35,8 @@ class Game {
         this.image = new Tilemap([0, 0], 'level1.png')
         // console.log(this.image.src,"IMAGE")
         // console.log('pass')
+        this.player = new Player('Char_sprite.png', ani_char)
+
     }
 
     addPlatform(current_level){
@@ -97,7 +96,9 @@ class Game {
         this.ducks = []
         this.addPlatform(this.level)
         this.addDucks(this.level)
-        if(this.level===1){
+        if(this.level===0){
+            this.image = new Tilemap([0, 0], 'level1.png')
+        }else if(this.level===1){
             this.image = new Tilemap([0, 0], 'level2.png')
         }else if(this.level===2){
             this.image = new Tilemap([0, 0], 'level3.png')
@@ -116,7 +117,6 @@ class Game {
             if (this.player.currentFrame < this.player.frame_rate - 1) this.player.currentFrame++
             else this.player.currentFrame = 0
         }
-       
     }
 }
 export default Game;
