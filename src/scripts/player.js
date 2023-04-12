@@ -83,7 +83,6 @@ class Player extends Sprite{
             this.velocity.y = -5
             this.onground = false
             // this.isJumping = true;
-            console.log("start jumping")
         }
 
 

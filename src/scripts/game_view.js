@@ -141,6 +141,7 @@ class GameView {
     HorizontalCollisions() {
         for (let i = 0; i < this.platforms.length; i++) {
             const collisionBlock = this.platforms[i];
+            //check if a collusion with a block is happening
             if (
                 this.player1.hitbox.position.x <=
                 collisionBlock.position.x + collisionBlock.width &&
@@ -156,6 +157,7 @@ class GameView {
                 const wasBelowBlock = prevPositionY >= collisionBlock.position.y + collisionBlock.height;
 
                 //check if the player is on top or below of the block
+                //would push back the player even on a flat surface if not added
                 if (wasAboveBlock || wasBelowBlock) {
                     continue;
                 }
@@ -197,18 +199,9 @@ class GameView {
                 collisionBlock.position.y + collisionBlock.height
             ) {
                 
-                const prevPositionY = updatedY - this.player1.velocity.y;
-                const wasAboveBlock = prevPositionY + this.player1.hitbox.height <= collisionBlock.position.y;
-                const wasBelowBlock = prevPositionY >= collisionBlock.position.y + collisionBlock.height;
-
-                const prevPositionX = updatedX - this.player1.velocity.x;
-                const wasOutsideBlockHorizontally =
-                    prevPositionX + this.player1.hitbox.width <= collisionBlock.position.x ||
-                    prevPositionX >= collisionBlock.position.x + collisionBlock.width;
-                // console.log(prevPositionX,"prevPositionX")
-                // console.log(prevPositionY,"prevPositionY")
+               
                 // Top collision
-                if (this.player1.velocity.y > 0 && wasAboveBlock && wasOutsideBlockHorizontally) {
+                if (this.player1.velocity.y > 0 ) {
                     this.player1.velocity.y = 0;
                     const offset = this.player1.hitbox.position.y - this.player1.position.y + this.player1.hitbox.height;
                     this.player1.position.y = collisionBlock.position.y - offset - 0.001;
