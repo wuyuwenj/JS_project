@@ -9,15 +9,17 @@ Players will be able to:
 
 •	Moving left and right with a and d
 
-![](https://github.com/wuyuwenj/JS_project/blob/main/control.png)
-
 •	jump with w
 
 •	Start and reset the level with r
 
 •	Enter the next level after rescure the duck
 
-<img src="https://github.com/wuyuwenj/JS_project/blob/main/demo.gif" alt="Demo" style="width:400px; height:300px;">
+<img src="https://github.com/wuyuwenj/JS_project/blob/main/control.png" alt="Demo" style="width:300px; height:200px; margin-left:50px">
+
+<img src="https://github.com/wuyuwenj/JS_project/blob/main/mainpage.png" alt="Demo" style="width:500px; height:300px;">
+
+<img src="https://github.com/wuyuwenj/JS_project/blob/main/demo.gif" alt="Demo" style="width:400px; height:300px; margin-left:20px">
 
 
 
