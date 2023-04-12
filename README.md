@@ -2,12 +2,6 @@ Background
 
 <a rel="noreferrer" target="_blank" href="https://wuyuwenj.github.io/JS_project/">Pixel Quack Quest: The Dungeon Rescue</a> is a game in which players must locate and rescue a group of missing ducks. Players must interact with characters and collect clues to uncover the ducks' whereabouts.
 
-Rules:
-
-1)	You will have 1 live on each level, try to avoid enemies and get over the hurdles
-
-2)	You can move left, right and jump
-
 
 Functionality
 
@@ -54,23 +48,9 @@ This project will be implemented with the following technologies:
 
 
 
-Implementation Timeline
-
-NB:
-
-•	Friday Afternoon & Weekend: Setup project, including getting webpack up and running. Get canvas to show up on the screen, and spend time getting comfortable with the Canvas API. Create Tilemap, Player, Ducks and Platform classes. Try to render the grid, make sure the player can move properly with wad key. 
-
-•	Monday: Start creating different objects such as enemies and floor to support the player If possible, try to start working on collision between floor, player and duck.
-
-•	Tuesday: Finish all collisions and work on creating and designing different levels 
-
-•	Wednesday: Focus on  stying characters and level. Adding clear instructions on how to play and adding nav link.
-
-•	Thursday Morning: Deploy to GitHub pages. If time, rewrite this proposal as a production README.
 
 
-
-Bonus features
+Future implementation
 
 •	Adding multiple ducks in a map
 
