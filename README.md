@@ -1,6 +1,6 @@
 Background
 
-"Pixel Quack Quest: The Dungeon Rescue" is a game in which players must locate and rescue a group of missing ducks. Players must interact with characters and collect clues to uncover the ducks' whereabouts.
+<a rel="noreferrer" target="_blank" href="https://wuyuwenj.github.io/JS_project/">Pixel Quack Quest: The Dungeon Rescue</a> is a game in which players must locate and rescue a group of missing ducks. Players must interact with characters and collect clues to uncover the ducks' whereabouts.
 
 Rules:
 
