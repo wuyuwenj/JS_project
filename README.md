@@ -3,7 +3,7 @@
 Pixel Quack Quest: The Dungeon Rescue is a game in which players must locate and rescue a group of missing ducks. Players must interact with characters and collect clues to uncover the ducks' whereabouts.
 
 
-<h2>Functionality</h2>
+<h2>How to Play</h2>
 
 Players will be able to: 
 
@@ -19,7 +19,7 @@ Players will be able to:
 
 
 
-Technologies, Libraries, APIs
+<h2>Technologies, Libraries, APIs</h2>
 
 This project will be implemented with the following technologies:
 
@@ -34,7 +34,7 @@ This project will be implemented with the following technologies:
 
 
 
-Future implementation
+<h2>Future implementation</h2>
 
 •	Adding multiple ducks in a map
 
