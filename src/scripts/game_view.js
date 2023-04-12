@@ -27,6 +27,7 @@ class GameView {
         document.getElementById("restart-game-button").addEventListener("click", function () {
             currentgame.level = 0;
             currentgame.updatemap();
+
             document.getElementById("Game-over-screen").style.display = "none";
             document.getElementById("canvas").style.display = "block";
         });
@@ -38,15 +39,18 @@ class GameView {
         });
         
     }
-    ChangeToWinningScreen(currentgame){
+    ChangeToWinningScreen(currentgame,ctx){
         document.getElementById('canvas').style.display = 'none';
         document.getElementById('winning-screen').style.display = 'flex';
 
         document.getElementById("win-restart-game-button").addEventListener("click", function () {
             currentgame.level = 0;
             currentgame.updatemap();
+
+
             document.getElementById("winning-screen").style.display = "none";
             document.getElementById("canvas").style.display = "block";
+            currentgame = new Game(this.ctx);
         });
 
         document.getElementById("win-main-menu-button").addEventListener("click", function () {
@@ -55,20 +59,45 @@ class GameView {
 
             document.getElementById("winning-screen").style.display = "none";
             document.getElementById("game-description").style.display = "flex";
+            currentgame = new Game(this.ctx);
+
         });
     }
     animate(time) {
         // let timeDelta = time - this.lastTime;
+        let triggerHoriCol=false;
+        if(this.game.level===this.endingLevel){
+            this.game.player.position = {
+                x: 200,
+                y: 400
+            }
+            this.game.player.velocity = {
+                x: 0,
+                y: 0
+            }
+            this.ChangeToWinningScreen(this.game,this.ctx);
+            
+        }
+        // console.log(this.game.player.position.y,"current y")
+        // console.log(this.game.player.position.x, "current x")
 
-        if(this.game.level===this.endingLevel)this.ChangeToWinningScreen(this.game);
         this.player1 = this.game.player
         this.platforms = this.game.platforms
         this.velapply()
         this.player1.updateHitbox()
+        const hitboxX = this.game.player.hitbox.position.x;
         this.HorizontalCollisions()
+        // console.log(triggerHoriCol,"aftrer horizontal")
         this.applyGravity()
+        
+        if (this.game.player.position.x > 635.9) {
+            this.game.player.position.x = 635.9
+
+        }
         this.player1.updateHitbox()
-        this.VerticalCollisions()
+        
+
+        this.VerticalCollisions(this.player1.position.x, this.player1.position.y, triggerHoriCol);
         if(this.game.change_level===false){
             this.collidewithduck()
         }
@@ -111,9 +140,7 @@ class GameView {
     //checking collision on top and bottom
     HorizontalCollisions() {
         for (let i = 0; i < this.platforms.length; i++) {
-            const collisionBlock = this.platforms[i]
-            
-            // if a collision exists
+            const collisionBlock = this.platforms[i];
             if (
                 this.player1.hitbox.position.x <=
                 collisionBlock.position.x + collisionBlock.width &&
@@ -124,61 +151,83 @@ class GameView {
                 this.player1.hitbox.position.y <=
                 collisionBlock.position.y + collisionBlock.height
             ) {
+                const prevPositionY = this.player1.position.y - this.player1.velocity.y;
+                const wasAboveBlock = prevPositionY + this.player1.hitbox.height <= collisionBlock.position.y;
+                const wasBelowBlock = prevPositionY >= collisionBlock.position.y + collisionBlock.height;
+
+                //check if the player is on top or below of the block
+                if (wasAboveBlock || wasBelowBlock) {
+                    continue;
+                }
+
                 //push back out the block
-                if (this.player1.velocity.x < -0) {
-                    const offset = this.player1.hitbox.position.x - this.player1.position.x
-                    this.player1.position.x =collisionBlock.position.x + collisionBlock.width - offset + 0.01
-                    break
+                if (this.player1.velocity.x < 0) {
+                    const offset = this.player1.hitbox.position.x - this.player1.position.x;
+                    this.player1.position.x = collisionBlock.position.x + collisionBlock.width - offset + 0.01;
+                    break;
                 }
                 //push back out the block
-                if (this.player1.velocity.x > 0&&this.player1.velocity.y===0) {
-                    const offset = this.player1.hitbox.position.x - this.player1.position.x + this.player1.hitbox.width
-                    this.player1.position.x = collisionBlock.position.x - offset - 0.01
-
-                    break
+                if (this.player1.velocity.x > 0) {
+                    const offset = this.player1.hitbox.position.x - this.player1.position.x
+                    this.player1.position.x = collisionBlock.position.x - this.player1.hitbox.width - offset - 0.1;
+                    break;
                 }
             }
         }
     }
+
 
     applyGravity() {
         this.player1.velocity.y += this.player1.gravity
         this.player1.position.y += this.player1.velocity.y
     }
 
-    VerticalCollisions() {
+    VerticalCollisions(updatedX, updatedY, triggerHoriCol) {
         for (let i = 0; i < this.platforms.length; i++) {
             const collisionBlock = this.platforms[i]
 
             if (
-                this.player1.hitbox.position.x <=
+                this.player1.hitbox.position.x <
                 collisionBlock.position.x + collisionBlock.width &&
-                this.player1.hitbox.position.x + this.player1.hitbox.width >=
+                this.player1.hitbox.position.x + this.player1.hitbox.width >
                 collisionBlock.position.x &&
-                this.player1.hitbox.position.y + this.player1.hitbox.height >=
+                this.player1.hitbox.position.y + this.player1.hitbox.height >
                 collisionBlock.position.y &&
-                this.player1.hitbox.position.y <=
+                this.player1.hitbox.position.y <
                 collisionBlock.position.y + collisionBlock.height
             ) {
-                //push back out the block
-                if (this.player1.velocity.y < 0) {
-                    this.player1.velocity.y = 0
-                    const offset = this.player1.hitbox.position.y - this.player1.position.y
-                    this.player1.position.y =
-                        collisionBlock.position.y + collisionBlock.height - offset + 0.001
-                    break
+                
+                const prevPositionY = updatedY - this.player1.velocity.y;
+                const wasAboveBlock = prevPositionY + this.player1.hitbox.height <= collisionBlock.position.y;
+                const wasBelowBlock = prevPositionY >= collisionBlock.position.y + collisionBlock.height;
+
+                const prevPositionX = updatedX - this.player1.velocity.x;
+                const wasOutsideBlockHorizontally =
+                    prevPositionX + this.player1.hitbox.width <= collisionBlock.position.x ||
+                    prevPositionX >= collisionBlock.position.x + collisionBlock.width;
+                // console.log(prevPositionX,"prevPositionX")
+                // console.log(prevPositionY,"prevPositionY")
+                // Top collision
+                if (this.player1.velocity.y > 0 && wasAboveBlock && wasOutsideBlockHorizontally) {
+                    this.player1.velocity.y = 0;
+                    const offset = this.player1.hitbox.position.y - this.player1.position.y + this.player1.hitbox.height;
+                    this.player1.position.y = collisionBlock.position.y - offset - 0.001;
+
+                    break;
                 }
-                //push back out the block
-                if (this.player1.velocity.y > 0) {
-                    this.player1.velocity.y = 0
-                    const offset =
-                        this.player1.hitbox.position.y - this.player1.position.y + this.player1.hitbox.height
-                    this.player1.position.y = collisionBlock.position.y - offset - 0.001
-                    break
+
+                // Bottom collision
+                if (this.player1.velocity.y < 0 ) {
+                    this.player1.velocity.y = 0;
+                    const offset = this.player1.hitbox.position.y - this.player1.position.y;
+                    this.player1.position.y = collisionBlock.position.y + collisionBlock.height - offset + 0.001;
+
+                    break;
                 }
             }
         }
     }
+
 }
 
 

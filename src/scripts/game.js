@@ -40,6 +40,7 @@ class Game {
         
         let parsedCollisions = collision_levels[current_level].parse2D()
         this.platforms = parsedCollisions.createObjectsFrom2D()
+
     }
 
     addDucks(current_level){
@@ -59,7 +60,7 @@ class Game {
         // }
         // console.log('pass1')
         if(this.level===2){
-
+            
         }
         this.image.draw(ctx)
         // console.log('pass2')

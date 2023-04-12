@@ -78,12 +78,19 @@ class Player extends Sprite{
     jump() {
         // console.log(this.velocity.x, "velocity bj")
         // console.log(this.velocity.y, "velocityy bj")
+        // console.log("this.ongroundongroundongroundongroundongroundongroundonground")
         if(this.velocity.y===0){
             this.velocity.y = -5
             this.onground = false
+            // this.isJumping = true;
+            console.log("start jumping")
         }
 
 
+    }
+    land() {
+        // Reset player velocity and set isJumping to false
+        this.onground = true
     }
 
     //drawing char as a block for testing
