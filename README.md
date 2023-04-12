@@ -1,9 +1,9 @@
-Background
+<h1><a rel="noreferrer" target="_blank" href="https://wuyuwenj.github.io/JS_project/">Pixel Quack Quest: The Dungeon Rescue</a></h1>
 
-<a rel="noreferrer" target="_blank" href="https://wuyuwenj.github.io/JS_project/">Pixel Quack Quest: The Dungeon Rescue</a> is a game in which players must locate and rescue a group of missing ducks. Players must interact with characters and collect clues to uncover the ducks' whereabouts.
+Pixel Quack Quest: The Dungeon Rescue is a game in which players must locate and rescue a group of missing ducks. Players must interact with characters and collect clues to uncover the ducks' whereabouts.
 
 
-Functionality
+<h2>Functionality</h2>
 
 Players will be able to: 
 
@@ -11,28 +11,12 @@ Players will be able to:
 
 •	jump with w
 
-•	Start and reset the level
+•	Start and reset the level with r
 
 •	Enter the next level after rescure the duck
 
 
-<img width="395" alt="startscreen" src="https://user-images.githubusercontent.com/83894727/217940436-ce855f0e-9418-4450-9402-bf117dab29a3.png">
 
-
-Wireframes
-
-
-•	A start screen will appear for some game description and a start button at first.
-
-•	After the player start the game, the screen will show wad control. 
-
-•	Then, player can press any keys after to start playing.
-
-•	Simple instructions will include move:wad to make sure player know how to play
-
-•	Controls will includes Start, stop, Reset and back to main menu.
-
-•	Nav links include links to this project's Github repo, my LinkedIn.
 
 
 Technologies, Libraries, APIs
